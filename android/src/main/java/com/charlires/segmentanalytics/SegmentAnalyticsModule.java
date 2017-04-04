@@ -78,6 +78,21 @@ public class SegmentAnalyticsModule extends ReactContextBaseJavaModule {
         );
     }
 
+    @ReactMethod
+    public void reset() {
+        Analytics.with(this.getReactApplicationContext()).reset();
+    }
+
+    @ReactMethod
+    public void group(String groupName, ReadableMap properties) {
+
+        Analytics.with(this.getReactApplicationContext()).group(
+                groupName,
+                this.toProperties(properties)
+        );
+    }
+
+
     private boolean nullOrEmpty(@Nullable ReadableMap readableMap) {
         return readableMap == null || !readableMap.keySetIterator().hasNextKey();
     }
