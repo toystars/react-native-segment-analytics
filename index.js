@@ -2,26 +2,34 @@ import {
   NativeModules,
 } from 'react-native';
 
-const {SegmentAnalytics} = NativeModules;
+const { SegmentAnalytics } = NativeModules;
 
 export default {
-  setup: function (configKey: string) {
+  setup(configKey: string) {
     SegmentAnalytics.setup(configKey);
   },
 
-  identify: function (userId: string, traits: Object) {
+  identify(userId: string, traits: Object) {
     SegmentAnalytics.identify(userId, traits);
   },
 
-  track: function (trackText: string, properties: Object) {
+  track(trackText: string, properties: Object) {
     SegmentAnalytics.track(trackText, properties);
   },
 
-  screen: function (screenName: string, properties: Object) {
+  screen(screenName: string, properties: Object) {
     SegmentAnalytics.screen(screenName, properties);
   },
 
-  alias: function (newId: string) {
+  alias(newId: string) {
     SegmentAnalytics.alias(newId);
-  }
+  },
+
+  group(groupName: string, properties: Object) {
+    SegmentAnalytics.group(groupName, properties);
+  },
+
+  reset() {
+    SegmentAnalytics.reset();
+  },
 };
